@@ -1,3 +1,28 @@
+const base = 'https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/night/';
+const images = ['01.jpg', '02.jpg', '03.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg'];
+let i = 0;
+
+function viewBgImage(data) {
+    const body = document.querySelector('body');
+    const src = data;
+    const img = document.createElement('img');
+    img.src = src;
+    img.onload = () => {
+        body.style.backgroundImage = `url(${src})`;
+    };
+}
+
+function getImage() {
+    const index = i % images.length;
+    const imageSrc = base + images[index];
+    viewBgImage(imageSrc);
+    i++;
+    btn.disabled = true;
+    setTimeout(function() { btn.disabled = false }, 1000);
+}
+const btn = document.querySelector('.btn');
+btn.addEventListener('click', getImage);
+
 // DOM Elements
 const time = document.getElementById('time'),
     greeting = document.getElementById('greeting'),
@@ -13,10 +38,9 @@ function showTime() {
         hour = today.getHours(),
         min = today.getMinutes(),
         sec = today.getSeconds();
-    msc = today.getMilliseconds();
 
     // Set AM or PM
-    const amPm = hour >= 24 ? '' : '';
+    const amPm = hour >= 12 ? 'PM' : 'AM';
 
     // 12hr Format
     hour = hour % 24 || 24;
@@ -41,15 +65,15 @@ function setBgGreet() {
 
     if (hour < 12) {
         // Morning
-        document.body.style.backgroundImage = "url('https://img5.goodfon.ru/original/1920x1080/7/6f/boats-early-morning-jasper-cananda-jasper-national-park.jpg')";
+        document.body.style.backgroundImage = "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
         greeting.textContent = 'Good Morning, ';
     } else if (hour < 18) {
         // Afternoon
-        document.body.style.backgroundImage = "url('https://img5.goodfon.ru/original/1920x1080/6/f8/abandoned-afternoon-les-stroenie-avtomobil-rastitelnost.jpg?d=1')";
+        document.body.style.backgroundImage = "url('https://i.ibb.co/3mThcXc/afternoon.jpg')";
         greeting.textContent = 'Good Afternoon, ';
     } else {
         // Evening
-        document.body.style.backgroundImage = "url('https://img5.goodfon.ru/original/1920x1080/6/a0/bisbiswas-artist-sunset-twilight-people-huose-dog-birds-brid.jpg?d=1')";
+        document.body.style.backgroundImage = "url('https://i.ibb.co/924T2Wv/night.jpg')";
         greeting.textContent = 'Good Evening, ';
         document.body.style.color = 'white';
     }
