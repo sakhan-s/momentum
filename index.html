@@ -2,27 +2,35 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
     <title>momentum</title>
 </head>
 
 <body>
+    <div class="weather">
+        <div class="icon"></div>
+        <div class="current-city"></div>
+        <div class="temperature"></div>
+        <div class="humidity"></div>
+        <div class="windspeed"></div>
+    </div>
     <button class="btn">   </button>
-    <time id="time" datetime="">20:21:15</time>
+    <time class="time"></time>
+
     <h1>
-        <span id="greetings">
-            Hello there,
-        </span>
-        <span id="name" contenteditable="true">
-            Wrire Your Name
-        </span>
+        <span class="greeting"></span>
+        <span class="name" contenteditable="true"></span>
     </h1>
+    <time class="date"></time>
     <h2>What Is Your Focus For Today?</h2>
-    <h2 id="focus" contenteditable="true"></h2>
-    <script src="/script.js"></script>
+    <h2 class="focus" contenteditable="true"></h2>
+    <div class="quote"></div>
+    <div class="quote-author"></div>
+    <button class="quote-btn"></button>
+    <script src="script.js"></script>
 </body>
 
 </html>

@@ -18,16 +18,20 @@ body {
     color: black;
 }
 
-#time {
-    font-size: 8rem;
+.time {
+    font-size: 12rem;
+}
+
+.date {
+    font-size: 7rem;
 }
 
 #name {
-    width: 21rem;
     border-bottom: 2px solid whitesmoke;
 }
 
-.btn {
+.btn,
+.quote-btn {
     width: 60px;
     height: 60px;
     border: 0;
