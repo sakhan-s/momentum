@@ -1,11 +1,167 @@
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        color: whitesmoke;
-        text-shadow: 0px 11px 20px rgba(240, 129, 150, 1);
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: whitesmoke;
+    text-shadow: 3px 4px 1px rgb(0, 0, 0);
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    flex-direction: column;
+    background: black;
+    background-repeat: round;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    color: black;
+}
+
+.time {
+    font-size: 7rem;
+}
+
+.date,
+.day-name {
+    font-size: 4rem;
+}
+
+.quote,
+.quote-author {
+    display: flex;
+    position: relative;
+    word-wrap: none;
+    justify-content: center;
+    color: whitesmoke;
+    text-shadow: 3px 4px 1px rgb(0, 0, 0);
+}
+
+.name {
+    border-bottom: 2px solid whitesmoke;
+    font-size: 3rem;
+}
+
+.focus {
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}
+
+.btn,
+.quote-btn {
+    width: 60px;
+    height: 60px;
+    border: 0;
+    background: url("https://www.pngarts.com/files/7/Update-Button-PNG-Image.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: grayscale(1);
+    margin: 10px;
+}
+
+.btn:hover {
+    filter: grayscale(.8);
+}
+
+.btn:active,
+.btn:focus {
+    outline: 0;
+}
+
+.btn:active {
+    transform: scale(1.02)
+}
+
+h1 {
+    margin-bottom: 3rem;
+    text-shadow: 3px 4px 1px rgb(0, 0, 0);
+}
+
+h2 {
+    margin-bottom: 0.5rem;
+    text-shadow: 3px 4px 1px rgb(0, 0, 0);
+}
+
+.quote,
+.quote-author {
+    word-wrap: break-word;
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 11px 20px rgb(4, 163, 255);
+}
+
+@media (max-width: 933px) {
+    .time {
+        font-size: 6rem;
     }
-    
+    .date {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .time {
+        font-size: 6rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .date {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 540px) {
+    body {
+        font-family: 'Quicksand', sans-serif;
+        display: flex;
+        flex-direction: column;
+        background: black;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 110vh;
+        color: black;
+    }
+    .time {
+        font-size: 4.8rem;
+    }
+}
+
+@media (max-width: 360px) {
+    body {
+        font-family: 'Quicksand', sans-serif;
+        display: flex;
+        flex-direction: column;
+        background: black;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 140vh;
+        color: black;
+    }
+    .btn {
+        position: absolute;
+        width: 40px;
+        right: 1rem;
+        top: 5rem;
+    }
+    .day-name {
+        font-size: 2rem;
+    }
+    .weather {
+        display: inline;
+    }
+    .time {
+        font-size: 3rem;
+    }
+    .quote-btn {
+        margin-left: 10%;
+    }
+}
+
+@media (max-width: 320px) {
     body {
         font-family: 'Quicksand', sans-serif;
         display: flex;
@@ -15,94 +171,21 @@
         justify-content: center;
         text-align: center;
         height: 100vh;
+        text-shadow: 3px 4px 1px rgb(0, 0, 0);
         color: black;
     }
-    
+    .icon {
+        position: absolute;
+        top: -0.65rem;
+        right: -1rem;
+    }
     .time {
-        font-size: 10rem;
-    }
-    
-    .date {
-        font-size: 7rem;
-    }
-    
-    .name,
-    .focus {
-        border-bottom: 2px solid whitesmoke;
         font-size: 3rem;
     }
-    
-    .btn,
+    .day-name {
+        font-size: 2rem;
+    }
     .quote-btn {
-        width: 60px;
-        height: 60px;
-        border: 0;
-        background: url("https://www.pngarts.com/files/7/Update-Button-PNG-Image.png");
-        background-size: contain;
-        background-repeat: no-repeat;
-        filter: grayscale(1);
-        margin: 10px;
+        margin-left: 10%;
     }
-    
-    .btn:hover {
-        filter: grayscale(.8);
-    }
-    
-    .btn:active,
-    .btn:focus {
-        outline: 0;
-    }
-    
-    .btn:active {
-        transform: scale(1.02)
-    }
-    
-    .focus {
-        border-bottom: 2px solid floralwhite;
-    }
-    
-    h1 {
-        margin-bottom: 3rem;
-    }
-    
-    h2 {
-        margin-bottom: 0.5rem;
-        opacity: 0.6;
-    }
-    
-    @media (max-width: 933px) {
-        .time {
-            font-size: 6rem;
-        }
-        .date {
-            font-size: 4rem;
-        }
-        transition: 0.5;
-    }
-    
-    @media (max-width: 700px) {
-        .time {
-            font-size: 6rem;
-        }
-    }
-    
-    @media (max-width: 700px) {
-        .date {
-            font-size: 2rem;
-        }
-    }
-    
-    @media (max-width: 320px) {
-        .time {
-            font-size: 3rem;
-        }
-    }
-    
-    @media (max-width: 320px) {
-        .date {
-            font-size: 2rem;
-        }
-        .time {
-            font-size: 2rem;
-        }
-    }
+}

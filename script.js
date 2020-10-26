@@ -58,7 +58,6 @@ function getImage() {
 const btn = document.querySelector('.btn');
 btn.addEventListener('click', getImage);
 
-
 function showTime() {
     let today = new Date(),
         year = today.getFullYear(),
@@ -69,27 +68,27 @@ function showTime() {
         min = today.getMinutes(),
         sec = today.getSeconds();
     const monthArr = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
+        "января",
+        "февраля",
+        "марта",
+        "апреля",
+        "мая",
+        "июня",
+        "июля",
+        "августа",
+        "сентября",
+        "октября",
+        "ноября",
+        "декабря",
     ];
     const dayArr = [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
+        "Воскресенье",
+        "Понедельник",
+        "Вторник",
+        "Среда",
+        "Четверг",
+        "Пятница",
+        "Суббота",
     ];
     let currentDay = dayArr[dayIdx]
     let currentMonth = monthArr[monthIdx];
@@ -101,7 +100,7 @@ function showTime() {
     currentMonth = currentMonth <= 9 ? '0' + currentMonth : currentMonth;
 
     time.innerHTML = `${hour}<span>:</span>${min}<span>:</span>${sec}`;
-    date.innerHTML = `${day}<span>/</span>${currentMonth}<span>/</span>${year}`;
+    date.innerHTML = `${day}<span>-го </span>${currentMonth}<span> </span>${year}<span> года</span>`;
     dayName.innerHTML = `${currentDay}`;
 }
 setInterval(showTime, 1000);
@@ -122,9 +121,9 @@ const getWeather = () => {
             currentCity.textContent = `${ data.city_name }`;
             temperature.textContent = `${ Math.round(data.data[0].temp - 273.15) }°`;
             icon.innerHTML = `<img src = "https://www.weatherbit.io/static/img/icons/${data.data[0].weather.icon}.png">`;
-            windSpeed.textContent = `wind: ${ data.data[0].wind_spd.toFixed(1) }
+            windSpeed.textContent = `ветер: ${ data.data[0].wind_spd.toFixed(1) }
             m / s`;
-            humidity.textContent = `humidity: ${ data.data[0].rh } %`;
+            humidity.textContent = `влажность: ${ data.data[0].rh } %`;
         });
 };
 setInterval(getWeather, 1800000);
@@ -137,17 +136,17 @@ function setBgGreet() {
         // Morning
         document.body.style.backgroundImage =
             "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
-        greeting.textContent = 'Good Morning, ';
+        greeting.textContent = 'Доброе утро, ';
     } else if (hour < 18 & hour > 12) {
         // Afternoon
         document.body.style.backgroundImage =
             "url('https://i.ibb.co/3mThcXc/afternoon.jpg')";
-        greeting.textContent = 'Good Afternoon, ';
+        greeting.textContent = 'Доброго дня, ';
     } else {
         // Evening
         document.body.style.backgroundImage =
             "url('https://i.ibb.co/924T2Wv/night.jpg')";
-        greeting.textContent = 'Good Evening, ';
+        greeting.textContent = 'Добрый вечер, ';
         document.body.style.color = 'white';
     }
 }
@@ -194,6 +193,7 @@ name.addEventListener('keypress', setName);
 name.addEventListener('blur', setName);
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
+
 
 // Run
 whereAmI();
