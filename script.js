@@ -153,7 +153,7 @@ function setBgGreet() {
 
 function getName() {
     if (localStorage.getItem('name') === null) {
-        name.textContent = '[Enter Name]';
+        name.textContent = '[Ваше имя]';
     } else {
         name.textContent = localStorage.getItem('name');
     }
@@ -172,7 +172,7 @@ function setName(e) {
 
 function getFocus() {
     if (localStorage.getItem('focus') === null) {
-        focus.textContent = '[Enter Focus]';
+        focus.textContent = '[Ваша цель]';
     } else {
         focus.textContent = localStorage.getItem('focus');
     }
