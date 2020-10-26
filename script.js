@@ -15,7 +15,7 @@ const time = document.querySelector('.time'),
 
     focus = document.querySelector('.focus');
 const state = {
-    city: "Moscow",
+    city: "",
 };
 const base = 'https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/night/';
 const images = ['01.jpg', '02.jpg', '03.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg'];
@@ -33,10 +33,9 @@ async function getQuote() {
     quote.textContent = data[i].text;
     quoteAuthor.textContent = data[i].author;
 }
-getQuote()
+
 const quoteBtn = document.querySelector('.quote-btn');
 quoteBtn.addEventListener('click', getQuote);
-
 
 function viewBgImage(data) {
     const body = document.querySelector('body');
@@ -105,7 +104,7 @@ function showTime() {
     date.innerHTML = `${day}<span>/</span>${currentMonth}<span>/</span>${year}`;
     dayName.innerHTML = `${currentDay}`;
 }
-// setInterval(showTime, 1000);
+setInterval(showTime, 1000);
 async function whereAmI() {
     const url = `https://ipinfo.io/json?token=b233ee8afcb052`;
     const promise = fetch(url)
@@ -134,12 +133,12 @@ function setBgGreet() {
     let today = new Date(),
         hour = today.getHours();
 
-    if (hour < 12) {
+    if (hour < 12 & hour > 6) {
         // Morning
         document.body.style.backgroundImage =
             "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
         greeting.textContent = 'Good Morning, ';
-    } else if (hour < 18) {
+    } else if (hour < 18 & hour > 12) {
         // Afternoon
         document.body.style.backgroundImage =
             "url('https://i.ibb.co/3mThcXc/afternoon.jpg')";
@@ -198,6 +197,7 @@ focus.addEventListener('blur', setFocus);
 
 // Run
 whereAmI();
+getQuote();
 showTime();
 setBgGreet();
 getName();
