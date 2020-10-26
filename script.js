@@ -1,6 +1,7 @@
 const time = document.querySelector('.time'),
     date = document.querySelector('.date'),
     greeting = document.querySelector('.greeting'),
+    dayName = document.querySelector('.day-name'),
     name = document.querySelector('.name'),
     quote = document.querySelector('.quote'),
     quoteAuthor = document.querySelector('.quote-author'),
@@ -13,7 +14,9 @@ const time = document.querySelector('.time'),
     windSpeed = document.querySelector('.windspeed'),
 
     focus = document.querySelector('.focus');
-
+const state = {
+    city: "Moscow",
+};
 const base = 'https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/night/';
 const images = ['01.jpg', '02.jpg', '03.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg'];
 let i = 0;
@@ -30,11 +33,10 @@ async function getQuote() {
     quote.textContent = data[i].text;
     quoteAuthor.textContent = data[i].author;
 }
-// getQuote()
-// const quoteBtn = document.querySelector('.quote-btn');
-// quoteBtn.addEventListener('click', getQuote);
-quote.textContent = 'quotequotequotequotequotequotequotequotequotequotequotequotequotequotequote';
-quoteAuthor.textContent = 'authorauthorauthor';
+getQuote()
+const quoteBtn = document.querySelector('.quote-btn');
+quoteBtn.addEventListener('click', getQuote);
+
 
 function viewBgImage(data) {
     const body = document.querySelector('body');
@@ -57,28 +59,64 @@ function getImage() {
 const btn = document.querySelector('.btn');
 btn.addEventListener('click', getImage);
 
+
 function showTime() {
     let today = new Date(),
         year = today.getFullYear(),
-        day = today.getDay(),
-        month = today.getMonth(),
+        day = today.getDate(),
+        dayIdx = today.getDay(),
+        monthIdx = today.getMonth(),
         hour = today.getHours(),
         min = today.getMinutes(),
         sec = today.getSeconds();
+    const monthArr = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ];
+    const dayArr = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+    ];
+    let currentDay = dayArr[dayIdx]
+    let currentMonth = monthArr[monthIdx];
+
     hour = hour <= 9 ? '0' + hour : hour;
     min = min <= 9 ? '0' + min : min;
     sec = sec <= 9 ? '0' + sec : sec;
-
     day = day <= 9 ? '0' + day : day;
-    month = month <= 9 ? '0' + month : month;
+    currentMonth = currentMonth <= 9 ? '0' + currentMonth : currentMonth;
 
     time.innerHTML = `${hour}<span>:</span>${min}<span>:</span>${sec}`;
-    date.innerHTML = `${day}<span>/</span>${month}<span>/</span>${year}`;
+    date.innerHTML = `${day}<span>/</span>${currentMonth}<span>/</span>${year}`;
+    dayName.innerHTML = `${currentDay}`;
 }
-setInterval(showTime, 1000);
-
+// setInterval(showTime, 1000);
+async function whereAmI() {
+    const url = `https://ipinfo.io/json?token=b233ee8afcb052`;
+    const promise = fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+            state.city = data.city;
+        });
+    await promise.then(getWeather);
+};
 const getWeather = () => {
-    const url = `https://api.weatherbit.io/v2.0/forecast/daily?city=Minsk&days=1&units=S&lang=en&key=f030306e955b45f19ceaeaa1bbbf6a06`;
+    const url = `https://api.weatherbit.io/v2.0/forecast/daily?city=${state.city}&days=1&units=S&lang=en&key=f030306e955b45f19ceaeaa1bbbf6a06`;
     fetch(url)
         .then((res) => res.json())
         .then((data) => {
@@ -90,7 +128,6 @@ const getWeather = () => {
             humidity.textContent = `humidity: ${ data.data[0].rh } %`;
         });
 };
-getWeather();
 setInterval(getWeather, 1800000);
 
 function setBgGreet() {
@@ -160,6 +197,7 @@ focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
 
 // Run
+whereAmI();
 showTime();
 setBgGreet();
 getName();
